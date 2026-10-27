@@ -2,6 +2,10 @@
 build
 build-*
 
+# Premake build output (Hazel-style integration)
+/bin/
+/bin-int/
+
 # Visual Studio clutter
 _ReSharper*
 *.sdf
