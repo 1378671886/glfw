@@ -921,6 +921,14 @@ extern "C" {
  *  [window attribute](@ref GLFW_FOCUS_ON_SHOW_attrib).
  */
 #define GLFW_FOCUS_ON_SHOW          0x0002000C
+/*! @brief Window has titlebar window hint and attribute
+ *
+ *  Window has titlebar [window hint](@ref GLFW_TITLEBAR_hint) and
+ *  [window attribute](@ref GLFW_TITLEBAR_attrib).
+ *
+ *  NOTE: Added by Hazel
+ */
+#define GLFW_TITLEBAR               0x00C2000D
 
 /*! @brief Mouse input transparency window hint and attribute
  *
@@ -1611,6 +1619,12 @@ typedef void (* GLFWerrorfun)(int error_code, const char* description);
  *  @ingroup window
  */
 typedef void (* GLFWwindowposfun)(GLFWwindow* window, int xpos, int ypos);
+
+/*! @brief The function pointer type for window titlebar hittest callbacks.
+ *
+ *  NOTE: Added by Hazel
+ */
+typedef void (*GLFWtitlebarhittestfun)(GLFWwindow*, int, int, int*);
 
 /*! @brief The function pointer type for window size callbacks.
  *
@@ -4230,6 +4244,15 @@ GLFWAPI void* glfwGetWindowUserPointer(GLFWwindow* window);
  *  @ingroup window
  */
 GLFWAPI GLFWwindowposfun glfwSetWindowPosCallback(GLFWwindow* window, GLFWwindowposfun callback);
+
+/*! @brief Sets the titlebar hittest callback for the specified window.
+ *
+ *  The callback is asked whether the mouse is hovering the custom titlebar
+ *  area, which should then be handled like a native titlebar.
+ *
+ *  NOTE: Added by Hazel
+ */
+GLFWAPI GLFWtitlebarhittestfun glfwSetTitlebarHitTestCallback(GLFWwindow* window, GLFWtitlebarhittestfun callback);
 
 /*! @brief Sets the size callback for the specified window.
  *
